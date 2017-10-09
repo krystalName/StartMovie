@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "KNMovieViewController.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    NSString *versionCache = [[NSUserDefaults standardUserDefaults] objectForKey:@"VersionCache"];//本地缓存的版本号  第一次启动的时候本地是没有缓存版本号的。
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];//当前应用版本号
+    
+    
+    if (![versionCache isEqualToString:version]) //如果本地缓存的版本号和当前应用版本号不一样，则是第一次启动（更新版本也算第一次启动）
+    {
+        KNMovieViewController *KNVC = [[KNMovieViewController alloc]init];
+        // 1、获取媒体资源地址
+        NSString *path =  [[NSBundle mainBundle] pathForResource:@"opening_long_1080*1920.mp4" ofType:nil];
+        KNVC.movieURL = [NSURL fileURLWithPath:path];
+        self.window.rootViewController = KNVC;
+    }else{
+        //不是首次启动
+        ViewController *rootTabCtrl = [[ViewController alloc]init];
+        self.window.rootViewController = rootTabCtrl;
+    }
+    
     return YES;
 }
 
