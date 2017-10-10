@@ -32,9 +32,11 @@
 
 -(void)setMoviePlayer{
     
-    //设置代理.监听播放状态
+    //初始化AVPlayer
     self.AVPlayer = [[AVPlayerViewController alloc]init];
+    //多分屏功能取消
     self.AVPlayer.allowsPictureInPicturePlayback = NO;
+    //设置是否显示媒体播放组件
     self.AVPlayer.showsPlaybackControls = false;
     
     //初始化一个播放单位。给AVplayer 使用
