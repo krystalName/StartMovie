@@ -7,14 +7,16 @@
 //
 
 #import "KNMovieViewController.h"
-#import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
+#import "ViewController.h"
+
 
 @interface KNMovieViewController ()
 
-//播放器View
-@property(nonatomic, strong)AVPlayerViewController *AVplayer;
+
+//播放器ViewController
+@property(nonatomic, strong)AVPlayerViewController *AVPlayer;
 
 @end
 
@@ -30,53 +32,54 @@
 
 -(void)setMoviePlayer{
     
-    //初始化播放器
-    _AVplayer = [[AVPlayerViewController alloc]init];
-    //关闭AVPlayerViewController内部的约束
-    _AVplayer.view.translatesAutoresizingMaskIntoConstraints = YES;
     //设置代理.监听播放状态
-    _AVplayer.allowsPictureInPicturePlayback = NO;
-    _AVplayer.showsPlaybackControls = false;
+    self.AVPlayer = [[AVPlayerViewController alloc]init];
+    self.AVPlayer.allowsPictureInPicturePlayback = NO;
+    self.AVPlayer.showsPlaybackControls = false;
     
     //初始化一个播放单位。给AVplayer 使用
     AVPlayerItem *item = [[AVPlayerItem alloc]initWithURL:_movieURL];
     
     AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
-    
-    //设置AVPlayerViewController内部的AVPlayer为刚创建的AVPlayer
-    _AVplayer.player = player;
+
     //layer
     AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
-    
     [layer setFrame:[UIScreen mainScreen].bounds];
-    
     //设置填充模式
     layer.videoGravity = AVLayerVideoGravityResizeAspect;
     
-
-    [self.view.layer addSublayer:layer];
-
-    //开始播放
-    [_AVplayer.player play];
     
-    //通知r
+    //设置AVPlayerViewController内部的AVPlayer为刚创建的AVPlayer
+    self.AVPlayer.player = player;
+    //添加到self.view上面去
+    [self.view.layer addSublayer:layer];
+    //开始播放
+    [self.AVPlayer.player play];
+    
+    
+    
+    //这里设置的是重复播放。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playDidEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:item];
     
-    //添加进入应用页面
-    [self setupLoginView];
+
+    //定时器。延迟3秒再出现进入应用按钮
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(setupLoginView) userInfo:nil repeats:YES];
+    
 }
+
 
 //播放完成的代理
 - (void)playDidEnd:(NSNotification *)Notification{
     //播放完成后。设置播放进度为0 。 重新播放
-    [_AVplayer.player seekToTime:CMTimeMake(0, 1)];
+    [self.AVPlayer.player seekToTime:CMTimeMake(0, 1)];
     //开始播放
-    [_AVplayer.player play];
-    
+    [self.AVPlayer.player play];
 }
+
+
 
 - (void)setupLoginView
 {
@@ -91,10 +94,11 @@
     [self.view addSubview:enterMainButton];
     [enterMainButton addTarget:self action:@selector(enterMainAction:) forControlEvents:UIControlEventTouchUpInside];
 
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         enterMainButton.alpha = 1;
     }];
 }
+
 
 
 - (void)enterMainAction:(UIButton *)btn {
