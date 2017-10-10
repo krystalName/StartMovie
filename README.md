@@ -2,7 +2,7 @@
 
 ###  先上效果图
 
-![]{https://github.com/krystalName/StartMovie/blob/master/movie.gif}
+![](https://github.com/krystalName/StartMovie/blob/master/movie.gif)
 
  ## 跟着时代的变化。 很多app的启动页面会选择用一段视频去代替传统的滑动启动。 所以我就写了一个demo 实现了拿本地视频作为启示页面
  
