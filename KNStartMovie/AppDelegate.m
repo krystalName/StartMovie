@@ -20,12 +20,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     
-    NSString *versionCache = [[NSUserDefaults standardUserDefaults] objectForKey:@"VersionCache"];//本地缓存的版本号  第一次启动的时候本地是没有缓存版本号的。
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];//当前应用版本号
+    //刚开始肯定是NO. 因为没有保存过YES 放到userDefaults 里面.
+    BOOL isFirstUp =  [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstUp"];
     
+    //首先说明一下。 我这里是随便写的一个判断首次进入。下面说明正确写法
+    //1.首先要从服务器获取到版本号
+    //2.然后获取到Xcode设置版本号，把本地版本号上传到服务器。以方便下次比较
+    //3.开始比较。版本号不同就设置启动页面。 这个看具体需求。因为有些app升级之后是不会出现启动页面的。
+    //那是因为别人不需要每次升级都出现引导页。 
     
-    if (![versionCache isEqualToString:version]) //如果本地缓存的版本号和当前应用版本号不一样，则是第一次启动（更新版本也算第一次启动）
+    if (!isFirstUp) //如果本地缓存的数值是YES 就代表保存过
     {
+        //存到本地UserDefaults 里面
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstUp"];
+        
+        //然后再跳转到播放视频的画面
         KNMovieViewController *KNVC = [[KNMovieViewController alloc]init];
         // 1、获取媒体资源地址
         NSString *path =  [[NSBundle mainBundle] pathForResource:@"movie.mp4" ofType:nil];
