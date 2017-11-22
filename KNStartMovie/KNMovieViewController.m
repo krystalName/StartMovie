@@ -104,6 +104,7 @@
 
 
 - (void)enterMainAction:(UIButton *)btn {
+    
     ViewController *rootTabCtrl = [[ViewController alloc]init];
     self.view.window.rootViewController = rootTabCtrl;
 }
