@@ -1,4 +1,4 @@
-# KNStartMovie
+# KNStartMovie    辛辛苦苦点进来。 ～ 那就给个星星吧～
 
 ###  先上效果图
 
