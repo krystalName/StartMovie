@@ -42,8 +42,6 @@
     //开始播放
     [self.AVPlayer.player play];
     
-    
-    !!...
     //这里设置的是重复播放。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playDidEnd:)
