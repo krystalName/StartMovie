@@ -13,8 +13,8 @@
 		C216D5D41F8B1EDC00BE317F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C216D5D31F8B1EDC00BE317F /* Assets.xcassets */; };
 		C216D5D71F8B1EDC00BE317F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C216D5D51F8B1EDC00BE317F /* LaunchScreen.storyboard */; };
 		C216D5DA1F8B1EDC00BE317F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D5D91F8B1EDC00BE317F /* main.m */; };
-		C216D5E21F8B1F0B00BE317F /* KNMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D5E11F8B1F0B00BE317F /* KNMovieViewController.m */; };
 		C216D5E81F8B57E200BE317F /* movie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C216D5E71F8B57BA00BE317F /* movie.mp4 */; };
+		C2BF841220B7F59B00DCCCA7 /* KNMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF841120B7F59B00DCCCA7 /* KNMovieViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +28,9 @@
 		C216D5D61F8B1EDC00BE317F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C216D5D81F8B1EDC00BE317F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C216D5D91F8B1EDC00BE317F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C216D5E01F8B1F0B00BE317F /* KNMovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNMovieViewController.h; sourceTree = "<group>"; };
-		C216D5E11F8B1F0B00BE317F /* KNMovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNMovieViewController.m; sourceTree = "<group>"; };
 		C216D5E71F8B57BA00BE317F /* movie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = movie.mp4; sourceTree = "<group>"; };
+		C2BF841020B7F59B00DCCCA7 /* KNMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNMovieViewController.h; sourceTree = "<group>"; };
+		C2BF841120B7F59B00DCCCA7 /* KNMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMovieViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +69,22 @@
 				C216D5CD1F8B1EDC00BE317F /* ViewController.h */,
 				C216D5CE1F8B1EDC00BE317F /* ViewController.m */,
 				C216D5D01F8B1EDC00BE317F /* Main.storyboard */,
-				C216D5E01F8B1F0B00BE317F /* KNMovieViewController.h */,
-				C216D5E11F8B1F0B00BE317F /* KNMovieViewController.m */,
+				C2BF840F20B7F59B00DCCCA7 /* KNMovieView */,
 				C216D5D31F8B1EDC00BE317F /* Assets.xcassets */,
 				C216D5D51F8B1EDC00BE317F /* LaunchScreen.storyboard */,
 				C216D5D81F8B1EDC00BE317F /* Info.plist */,
 				C216D5D91F8B1EDC00BE317F /* main.m */,
 			);
 			path = KNStartMovie;
+			sourceTree = "<group>";
+		};
+		C2BF840F20B7F59B00DCCCA7 /* KNMovieView */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF841020B7F59B00DCCCA7 /* KNMovieViewController.h */,
+				C2BF841120B7F59B00DCCCA7 /* KNMovieViewController.m */,
+			);
+			path = KNMovieView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +166,7 @@
 			files = (
 				C216D5CF1F8B1EDC00BE317F /* ViewController.m in Sources */,
 				C216D5DA1F8B1EDC00BE317F /* main.m in Sources */,
-				C216D5E21F8B1F0B00BE317F /* KNMovieViewController.m in Sources */,
+				C2BF841220B7F59B00DCCCA7 /* KNMovieViewController.m in Sources */,
 				C216D5CC1F8B1EDC00BE317F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
