@@ -21,7 +21,7 @@
 
     
     //刚开始肯定是NO. 因为没有保存过YES 放到userDefaults 里面.
-    BOOL isFirstUp =  [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstLoad"];
+//    BOOL isFirstUp =  [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstLoad"];
     
     //首先说明一下。 我这里是随便写的一个判断首次进入。下面说明正确写法
     //1.首先要从服务器获取到版本号
@@ -29,7 +29,7 @@
     //3.开始比较。版本号不同就设置启动页面。 这个看具体需求。因为有些app升级之后是不会出现启动页面的。
     //那是因为别人不需要每次升级都出现引导页。 
     
-    if (!isFirstUp) //如果本地缓存的数值是YES 就代表保存过
+    if (YES) //如果本地缓存的数值是YES 就代表保存过
     {
         //存到本地UserDefaults 里面
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLoad"];

@@ -9,7 +9,7 @@
 #import "KNMovieViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
-#import "ViewController.h"
+
 
 
 @interface KNMovieViewController ()
@@ -105,7 +105,7 @@
 
 - (void)enterMainAction:(UIButton *)btn {
     
-    ViewController *rootTabCtrl = [[ViewController alloc]init];
-    self.view.window.rootViewController = rootTabCtrl;
+    self.VC  = [[ViewController alloc]init];
+    self.view.window.rootViewController = self.VC;
 }
 @end
