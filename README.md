@@ -4,6 +4,10 @@
 
 ![](https://github.com/krystalName/StartMovie/blob/master/movie.gif)
 
+## 你可以使用pod导入本组件
+
+...pod 'KNStartMovie'
+
  ## 跟着时代的变化。 很多app的启动页面会选择用一段视频去代替传统的滑动启动。 所以我就写了一个demo 实现了拿本地视频作为启示页面
  
  1.也可以做拿网络视频作为启动视频。（需要自己做）
